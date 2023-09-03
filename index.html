@@ -1,0 +1,206 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body class="main" style="background-image: url('helo.jpg'); height: 1500px; max-width: 100%; height: auto;">
+    
+    <div class="main" >
+    <h1 >Reservation Tidikelt voyages</h1>
+    
+   
+    
+    
+    
+
+    
+    <label>Nom et Prenom</label> 
+
+    <input class="main" id="nom" cols="40" rows="8"><br>
+    <label>date depart</label> 
+    <br>
+    <input class="main" type="date" id="datedepart" name="datemax" max="2040-12-31" min="2023-09-01"><br>
+    <label>date retour</label> 
+    <br>
+    <input class="main" type="date" id="dateretour" name="datemax" max="2040-12-31" min="2023-09-01"><br>
+    <label>depart</label> 
+    <br>
+    <input class="main" id="depart"  cols="40" rows="8"></textarea> <br>
+    <label>destination</label> 
+    <br>
+    <input class="main" id="dest"  cols="40" rows="8"></textarea> <br>
+    <label>Numero Mobil</label> 
+    <br>
+    <div id="nu" style="display: flex;">
+    <input type="text" style="width: 70px;" class="main" id="num"  cols="40" rows="8" value="+"></textarea> <br>
+    <input style="width: 220px; margin-right: 90px;" class="main" id="numb"  cols="40" rows="8"></textarea> 
+    </div>
+    <label>Hotel</label> 
+    <br>
+    <input type="email" class="main" id="hotel"  cols="40" rows="8"></textarea> <br>
+    
+    
+
+    <form id="select"  >
+      <label >nombre chambre</label>
+      <br>
+      <input id="ch" class="main" list="browsers" name="browser" id="browser">
+      <datalist id="browsers">
+        <option value="1 chambre">
+        <option value="2 chambres">
+        <option value="3 chambres">
+        <option value="4 chambres">
+        <option value="5 chambres">
+      </datalist>
+    
+    </form>
+
+    
+    
+
+    <label>remarque</label> 
+    <br>
+    <textarea class="main" id="remarque"></textarea> <br>
+    
+    <Form class="main" >
+    <input type="checkbox" id="utiliser" name="vehicle1" value="whatsap">
+    <label for="vehicle1"> je utilise whatsap</label>
+    <input type="checkbox" id="utiliser" name="vehicle2" value="Viber">
+    <label for="vehicle2"> je utilise viber</label>
+    <input type="checkbox" id="utiliser" name="vehicle3" value="Telegram">
+    <label for="vehicle3"> je utilise telegram</label>
+   </Form>
+
+
+    
+
+    <button onclick = "sendMail();">confirmer </button>
+  </div>
+
+
+    <style>
+      
+      @media screen and (max-width: 500px) {
+   .main {
+    width: 90%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+  #num{
+    margin-left: 0px;
+  }
+  #numb{
+    margin-left: 61px;
+  }
+  #nu{
+    margin-right: 350px;
+  }
+  
+}
+
+
+
+@media screen and (min-width: 1001px) {
+   .main {
+    margin: auto;
+
+    display: block;
+    width: 65%;
+  }
+  #num{
+    margin-left: 90px;
+  }
+  #select{
+    width: "460px";
+  }
+
+}
+
+@media screen and (max-width: 1000px) and (min-width: 801px) {
+  .main {
+    margin: auto;
+
+    display: block;
+    width: 70%;
+  }
+
+}
+
+@media screen and (max-width: 800px) and (min-width: 501px) {
+  .main {
+    margin: auto;
+
+    display: block;
+    width: 75%;
+  }
+  #num{
+    margin-left: 40px;
+    width: 30px;
+  }
+  #numb{
+    margin-right: 100px;
+    width: 30px;
+
+  }
+}
+    </style> 
+
+
+    <script>
+      function sendMail(){
+        (function(){
+          emailjs.init("_45daw9-d1DpJXoh0"); // Account Public Key
+        })();
+
+        var params = {
+          to: "bookingtidikelt@gmail.com",
+    
+           nom: document.querySelector("#nom").value,
+           datedepart :document.querySelector("#datedepart").value,
+           dateretour : document.querySelector("#dateretour").value,
+           num : document.querySelector("#num").value,
+           numb : document.querySelector("#numb").value,
+           depart : document.querySelector("#depart").value,
+           dest : document.querySelector("#dest").value,
+           hotel : document.querySelector("#hotel").value,
+           ch : document.querySelector("#ch").value,
+          
+           utiliser : document.querySelector("#utiliser").value,
+           remarque : document.querySelector("#remarque").value,
+
+
+
+        };
+
+        var serviceID = "service_7gc9aav"; // Email Service ID
+        var templateID = "template_9gzitwj"; // Email Template ID
+
+        emailjs.send(serviceID, templateID, params)
+        .then( res => {
+            alert("Email sent successfully!!")
+        })
+        .catch();
+      }
+    </script>
+<script>
+var input = document.querySelector('input[type="text"]');
+
+input.addEventListener("keydown", function() {
+  var oldVal = this.value;
+  console.log(oldVal);
+  var field = this;
+  console.log("funciona");
+  
+  setTimeout(function () {
+    if(field.value.indexOf('+') !== 0) {
+        field.value = oldVal;
+    } 
+}, 1);
+});
+
+</script>
+
+  </body>
+</html>
+
+
+
